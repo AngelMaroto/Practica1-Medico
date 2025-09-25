@@ -19,7 +19,7 @@
       </Label>
       <ImageView fitHeight="103.0" fitWidth="122.0" layoutX="241.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: white;">
          <image>
-            <Image url="@../resources/images/persona.png" />
+            <Image url="@../resources/images/persona.png"/>
          </image>
       </ImageView>
       <TextField layoutX="87.0" layoutY="179.0" prefHeight="25.0" prefWidth="431.0" promptText="Email ID">
