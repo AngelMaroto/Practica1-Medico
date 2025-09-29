@@ -6,7 +6,7 @@ CREATE TABLE Paciente(
 idP int unsigned auto_increment primary key,
 DNI varchar(9),
 nombre varchar (20),
-pass varchar(256),
+pass varchar(128),
 direccion varchar(100),
 telefono varchar(15)
 );
