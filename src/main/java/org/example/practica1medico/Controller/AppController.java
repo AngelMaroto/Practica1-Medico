@@ -1,9 +1,0 @@
-package org.example.practica1medico.Controller;
-
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
-public class AppController {
-
-}
-

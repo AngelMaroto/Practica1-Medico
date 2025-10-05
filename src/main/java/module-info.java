@@ -5,6 +5,8 @@ module org.example.practica1medico {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
+    requires java.sql;
+    requires mysql.connector.java;
 
     opens org.example.practica1medico to javafx.fxml;
     exports org.example.practica1medico;
