@@ -7,7 +7,7 @@ public class Cita {
     private LocalDate fecha;
     private String especialidad;
 
-    public Cita(LocalDate fecha, String especialidad) {
+    public Cita(int NCita,LocalDate fecha, String especialidad) {
         this.NCita = NCita;
         this.fecha = fecha;
         this.especialidad = especialidad;

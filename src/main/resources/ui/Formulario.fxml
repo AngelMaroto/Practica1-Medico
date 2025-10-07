@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:controller="org.example.practica1medico.Controller.FormularioController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.practica1medico.Controller.FormularioController">
    <children>
       <AnchorPane prefHeight="402.0" prefWidth="600.0">
          <children>
@@ -37,7 +37,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="txtDni" editable="false" layoutX="86.0" layoutY="39.0" style="-fx-background-color: white;" />
-                        <Button fx:id="btnVer" layoutX="410.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: grey;" text="Ver citas Paciente" />
+                        <Button onAction="#cargaCitas" fx:id="btnVer" layoutX="410.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: grey;" text="Ver citas Paciente" textFill="WHITE" />
                         <Label layoutX="14.0" layoutY="122.0" text="Nombre Paciente">
                            <font>
                               <Font name="System Bold Italic" size="21.0" />
@@ -97,9 +97,9 @@
       </HBox>
       <Pane prefHeight="96.0" prefWidth="601.0" translateY="50.0">
          <children>
-            <Button fx:id="btnNueva" layoutX="103.0" layoutY="36.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: grey;" text="Nueva Cita" />
-            <Button fx:id="btnBorrar" layoutX="258.0" layoutY="36.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: grey;" text="Borrar Cita" />
-            <Button fx:id="btnModificar" layoutX="412.0" layoutY="36.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: grey;" text="Modificar Cita" />
+            <Button fx:id="btnNueva" layoutX="103.0" layoutY="36.0" mnemonicParsing="false" onAction="#nuevaCita" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: grey;" text="Nueva Cita" textFill="WHITE" />
+            <Button fx:id="btnBorrar" layoutX="258.0" layoutY="36.0" mnemonicParsing="false" onAction="#borrarCita" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: grey;" text="Borrar Cita" textFill="WHITE" />
+            <Button fx:id="btnModificar" layoutX="412.0" layoutY="36.0" mnemonicParsing="false" onAction="#modificarCita" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: grey;" text="Modificar Cita" textFill="WHITE" />
          </children>
       </Pane>
    </children>

@@ -27,7 +27,7 @@
          </font>
       </TextField>
       <PasswordField fx:id="txtPassword" layoutX="87.0" layoutY="265.0" prefHeight="25.0" prefWidth="431.0" promptText="Password" />
-      <Button fx:id="btnLogin" layoutX="206.0" layoutY="327.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="173.0" text="LOGIN" onAction="#handleLogin">
+      <Button fx:id="btnLogin" layoutX="206.0" layoutY="327.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="173.0" text="LOGIN" onAction="#Login">
          <font>
             <Font name="Dubai Regular" size="17.0" />
          </font>

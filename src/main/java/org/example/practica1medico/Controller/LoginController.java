@@ -10,7 +10,10 @@ import javafx.stage.Stage;
 import org.example.practica1medico.UTIL.DBConnection;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginController {
 
@@ -18,9 +21,9 @@ public class LoginController {
     @FXML private PasswordField txtPassword;
     @FXML private Button btnLogin;
 
-
     @FXML
-    private void handleLogin(ActionEvent event) {
+    private void Login(ActionEvent event) {
+
         String email = txtEmailID.getText().trim();
         String pass = txtPassword.getText().trim();
 
@@ -29,25 +32,23 @@ public class LoginController {
             return;
         }
 
-        try (Connection conn = DBConnection.getConnection()) {
-            if (conn == null) {
-                mostrarAlerta("No se pudo conectar con la base de datos.");
-                return;
-            }
+        Connection conn = DBConnection.getConnection();
+        if (conn == null) {
+            mostrarAlerta("No se pudo conectar con la base de datos.");
+            return;
+        }
 
-            // Comprobamos si el email y la contraseña (SHA2) son correctos
-            String sql = """
-                    SELECT emailID, DNI, nombre, direccion, telefono
-                    FROM Paciente
-                    WHERE emailID = ? AND pass = SHA2(?, 256)
-                    """;
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, email);
-                ps.setString(2, pass);
-                ResultSet rs = ps.executeQuery();
+        String sql = """
+                SELECT emailID, DNI, nombre, direccion, telefono
+                FROM Paciente
+                WHERE emailID = ? AND pass = SHA2(?, 256)
+                """;
 
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    // Si encuentra al paciente, creamos el objeto Paciente
                     Paciente paciente = new Paciente(
                             rs.getString("emailID"),
                             rs.getString("DNI"),
@@ -55,17 +56,14 @@ public class LoginController {
                             rs.getString("direccion"),
                             rs.getString("telefono")
                     );
-
-                    // Cargar formulario principal
                     abrirFormularioPrincipal(paciente);
                 } else {
                     mostrarAlerta("Credenciales incorrectas. Intente de nuevo.");
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
-            mostrarAlerta("Error en la conexión o consulta.");
+            mostrarAlerta("Error en la conexión");
         }
     }
 
@@ -74,16 +72,15 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/Formulario.fxml"));
             Scene scene = new Scene(loader.load());
 
-            // Obtenemos el controlador del formulario y le pasamos el paciente
             FormularioController controller = loader.getController();
             controller.setPaciente(paciente);
 
             Stage stage = new Stage();
-            stage.setTitle("Centro Médico - Formulario del Paciente");
+            stage.setTitle("Formulario del Paciente");
             stage.setScene(scene);
             stage.show();
 
-            // Cerramos la ventana de login
+            //cierra ventana de login
             Stage currentStage = (Stage) btnLogin.getScene().getWindow();
             currentStage.close();
 
@@ -101,5 +98,3 @@ public class LoginController {
         alert.showAndWait();
     }
 }
-
-

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.practica1medico.UTIL.DBConnection;
 
 public class Main extends Application {
 
@@ -18,6 +19,11 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void stop() throws Exception {
+        DBConnection.closeConnection();
+        super.stop();
     }
 
     public static void main(String[] args) {
