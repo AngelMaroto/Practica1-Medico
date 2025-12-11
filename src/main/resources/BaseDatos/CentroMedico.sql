@@ -23,7 +23,7 @@ fk_idE_Especialidad int unsigned,
 fk_emailID_Paciente varchar(256)
 );
 
---Claves foráneas
+-- Claves foráneas
 ALTER TABLE Cita
 ADD FOREIGN KEY(fk_emailID_Paciente)
 REFERENCES Paciente(emailID);
@@ -53,8 +53,6 @@ INSERT INTO Especialidad (tipo) VALUES
 ('Oftalmología'),
 ('Dermatología');
 
--- INSERT CITAS DE EJEMPLO
-INSERT INTO Cita (fecha, fk_idE_Especialidad, fk_emailID_Paciente) VALUES
 -- CITAS ADICIONALES PARA TODOS LOS PACIENTES
 INSERT INTO Cita (fecha, fk_idE_Especialidad, fk_emailID_Paciente) VALUES
 ('2025-10-15', 1, 'carlos@gmail.com'),
@@ -77,4 +75,6 @@ INSERT INTO Cita (fecha, fk_idE_Especialidad, fk_emailID_Paciente) VALUES
 ('2025-11-25', 2, 'elena@gmail.com'),
 ('2025-11-27', 1, 'miguel@gmail.com'),
 ('2025-11-30', 4, 'ana@gmail.com');
+
+
 
